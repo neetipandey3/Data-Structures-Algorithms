@@ -31,12 +31,7 @@ class ListNode:
             node = node.next  # move on to the next node
 
 class SinglyLinkedList:
-   # def __init__(self):
-      #  self.head = None
-    #def addNodes(self, val):
-       # node = ListNode(val)
-       # node.next = self.head.next  # link the new node to the 'previous' node.
-       # self.head.next = node
+
     def removeNode(self, head: ListNode, n: int):
 
         if n==0:
@@ -50,13 +45,14 @@ class SinglyLinkedList:
         #when the list has exactly n elements
         if pointer2 == None:
             head = head.next
-        while pointer2.next != None:
-            pointer2 = pointer2.next
-            pointer1 = pointer1.next
+        else:
+            while pointer2.next != None:
+                pointer2 = pointer2.next
+                pointer1 = pointer1.next
            # if pointer2.next == None:
                 #break
 
-        pointer1.next = pointer1.next.next
+            pointer1.next = pointer1.next.next
 
         return head
 
