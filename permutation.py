@@ -20,7 +20,6 @@ class Permutation:
     def permuteRec(self, nums):
 
         result = []
-
         def permute(arr, rest):
 
             if len(rest) == 0:
