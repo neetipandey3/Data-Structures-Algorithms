@@ -56,6 +56,38 @@ class SinglyLinkedList:
 
         return head
 
+    def reverse_list_iter(self, head):
+        """
+        :type head: ListNode
+        :rtype: ListNode
+        """
+
+        def reverseList(self, head):
+            """
+            :type head: ListNode
+            :rtype: ListNode
+            """
+            prev = None
+            while head:
+                this = head
+                head = head.next
+                this.next = prev
+                prev = this
+
+            return prev
+        def reverse_list_rec(self, head, prev=None):
+            """
+            :type head: ListNode
+            :rtype: ListNode
+            """
+            if not head:
+                return prev
+            temp = head.next
+            head.next = prev
+            return reverse_list_rec(temp, head)
+
+
+
 
 def main():
     sll = SinglyLinkedList()

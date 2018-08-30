@@ -35,6 +35,16 @@ class Array:
         for _ in range(k):
             nums[:] = [nums.pop()] + nums
 
+    def contains_duplicate(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: bool
+        """
+        import numpy as np
+        nums = np.array(nums)
+        return True if np.unique(nums).size < nums.size else False
+
+
 
 def main():
     a = Array()
