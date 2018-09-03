@@ -46,20 +46,36 @@ class Strings:
         :type s: str
         :rtype: bool
         """
-        s = list(filter(lambda c: c.isalpha() or c.isdigit(), s))
+        #s = list(filter(lambda c: c.isalpha() or c.isdigit(), s))
+        s = list(filter(lambda c: c.isalnum(), s))
         s = ("".join(s)).lower()
-        print(s)
+        #print(s)
 
-        if s == "" or len(s) == 1:
+        if len(s) in (0, 1):
             return True
         for i in range(len(s)):
-            j = len(s) - i - 1
-            if i >= j:
-                break
-            if s[i] != s[j]:
+            if s[i] != s[-(i+1)]:
                 return False
 
         return True
+
+    def first_uniq_char(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        if not s:
+            return -1
+        counter = [0] * 26
+        for x in s:
+            counter[ord(x) - ord('a')] += 1
+
+        for idx, x in enumerate(s):
+            if counter[ord(x) - ord('a')] == 1:
+                return idx
+
+        return -1
+
 
 
 def main():
@@ -68,6 +84,7 @@ def main():
     print(s.reverse_int(-123))
     print(s.is_anagram("anagram", "nagaram"))
     print(s.is_palindrome("A man, a plan, a canal: Panama"))
+    print(s.first_uniq_char("falafals"))
 if __name__ == "__main__":
     main()
 
