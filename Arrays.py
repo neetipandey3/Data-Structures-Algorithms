@@ -40,9 +40,10 @@ class Array:
         :type nums: List[int]
         :rtype: bool
         """
-        import numpy as np
-        nums = np.array(nums)
-        return True if np.unique(nums).size < nums.size else False
+        return len(nums) != len(set(nums))
+        #import numpy as np
+        #nums = np.array(nums)
+        #return True if np.unique(nums).size < nums.size else False
 
 
 

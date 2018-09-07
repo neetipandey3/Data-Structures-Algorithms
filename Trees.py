@@ -57,6 +57,65 @@ class Trees:
         inorder_list = inorder_trav(root)
         return inorder_list == sorted(list(set(inorder_list)))
 
+    def is_symmetric_rec(self, root):
+        """
+        :type root: TreeNode
+        :rtype: bool
+
+        Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).
+
+        For example, this binary tree [1,2,2,3,4,4,3] is symmetric:
+
+            1
+           / \
+          2   2
+         / \ / \
+        3  4 4  3
+        But the following [1,2,2,null,3,null,3] is not:
+            1
+           / \
+          2   2
+           \   \
+           3    3
+        """
+        if not root:
+            return True
+
+        def is_sym_nodes(left, right):
+            if not left and not right:
+                return True
+            if not left or not right:
+                return False
+            if left.val != right.val:
+                return False
+
+            return is_sym_nodes(left.left, right.right) and is_sym_nodes(left.right, right.left)
+
+        return is_sym_nodes(root.left, root.right)
+
+    def is_symmetric_iter(self, root):
+        """
+        :type root: TreeNode
+        :rtype: bool
+
+        Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).
+
+        For example, this binary tree [1,2,2,3,4,4,3] is symmetric:
+
+            1
+           / \
+          2   2
+         / \ / \
+        3  4 4  3
+        But the following [1,2,2,null,3,null,3] is not:
+            1
+           / \
+          2   2
+           \   \
+           3    3
+        """
+
+
 
 def main():
     root = TreeNode(2)
@@ -64,6 +123,7 @@ def main():
     t.build(root, TreeNode(1))
     t.build(root, TreeNode(3))
     print(t.isValidBST(root))
+
 
 
 
