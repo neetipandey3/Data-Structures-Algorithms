@@ -121,11 +121,14 @@ class Strings:
 def main():
     s = Strings()
 
-    '''print(s.reverse_int(-123))
+    print(s.reverse_int(-123))
+    print("\n\n### Validate Anagram ###")
     print(s.is_anagram("anagram", "nagaram"))
+    print("\n\n### Validate Palindrome ###")
     print(s.is_palindrome("A man, a plan, a canal: Panama"))
+    print("\n\n### First Uniq (one without repetition) Character ###")
     print(s.first_uniq_char("falafals"))
-    '''
+    print("\n\n### My atoi ###")
     print(s.myAtoi("   -42"))
 
 if __name__ == "__main__":

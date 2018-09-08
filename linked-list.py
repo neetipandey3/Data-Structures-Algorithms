@@ -85,6 +85,25 @@ class LinkedList:
             print(l.val)
             l = l.next
 
+    def has_cycle(self, head):
+        """
+        :type head: ListNode
+        :rtype: bool
+        """
+
+        #Floyd's Cycle Detection Algorithm
+        if not head:
+            return False
+
+        slow = fast = head
+        while slow and fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+            if slow == fast:
+                return True
+        return False
+
+
 def main():
 
     #test merge_two_sorted_lists
