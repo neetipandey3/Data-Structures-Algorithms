@@ -76,15 +76,58 @@ class Strings:
 
         return -1
 
+    def myAtoi(self, str):
+        """
+        :type str: str
+        :rtype: int
+        """
+        str = str.lstrip()
+
+        if not str:
+            return 0
+        sign = ""
+        str_of_ints = ""
+        for s in str:
+            if not str_of_ints:
+                if s == "+" or s == "-":
+                    if sign:
+                        return 0
+                    sign = s
+                    continue
+                if not s.isdigit():
+                    return 0
+            elif str_of_ints:
+                if not s.isdigit():
+                    break
+            str_of_ints += s
+
+        print(str_of_ints)
+        my_int = 0
+        for i in str_of_ints:
+            my_int = my_int * 10 + (ord(i) - ord('0'))
+
+        print(my_int)
+        if sign == "-":
+            my_int = -1 * my_int
+
+        if my_int < -2 ** 31:
+            return -(2 ** 31)
+        if my_int > 2 ** 31 - 1:
+            return 2 ** 31 - 1
+
+        return my_int
 
 
 def main():
     s = Strings()
 
-    print(s.reverse_int(-123))
+    '''print(s.reverse_int(-123))
     print(s.is_anagram("anagram", "nagaram"))
     print(s.is_palindrome("A man, a plan, a canal: Panama"))
     print(s.first_uniq_char("falafals"))
+    '''
+    print(s.myAtoi("   -42"))
+
 if __name__ == "__main__":
     main()
 
