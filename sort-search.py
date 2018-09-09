@@ -24,3 +24,6 @@ class SortAndSearch:
                 n -= 1
         if m == 0 and n > 0:
             nums1[:n] = nums2[:n]
+
+
+

@@ -117,6 +117,27 @@ class Strings:
 
         return my_int
 
+    def longest_common_prefix(self, strs):
+        """
+        :type strs: List[str]
+        :rtype: str
+        """
+
+        if not strs:
+            return ""
+        if len(strs) == 1:
+            return strs[0]
+        prefix = ""
+        is_prefix = False
+        for i in range(len(strs[0])):
+            prefix = strs[0][:i + 1]
+            for s in strs:
+                if not s:
+                    return ""
+                if s[:i + 1] != prefix:
+                    return prefix[:i]
+        return prefix
+
 
 def main():
     s = Strings()
@@ -130,6 +151,8 @@ def main():
     print(s.first_uniq_char("falafals"))
     print("\n\n### My atoi ###")
     print(s.myAtoi("   -42"))
+    print("\n\n### Longest Common PRefix")
+    print(s.longest_common_prefix(["flower","flow","flight"]))
 
 if __name__ == "__main__":
     main()
