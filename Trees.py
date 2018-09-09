@@ -93,27 +93,42 @@ class Trees:
 
         return is_sym_nodes(root.left, root.right)
 
-    def is_symmetric_iter(self, root):
+    def levelOrder(self, root):
         """
         :type root: TreeNode
-        :rtype: bool
+        :rtype: List[List[int]]
 
-        Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).
+                Given a binary tree, return the level order traversal of its nodes' values. (ie, from left to right, level by level).
 
-        For example, this binary tree [1,2,2,3,4,4,3] is symmetric:
-
-            1
+        For example:
+        Given binary tree [3,9,20,null,null,15,7],
+            3
            / \
-          2   2
-         / \ / \
-        3  4 4  3
-        But the following [1,2,2,null,3,null,3] is not:
-            1
-           / \
-          2   2
-           \   \
-           3    3
+          9  20
+            /  \
+           15   7
+        return its level order traversal as:
+        [
+          [3],
+          [9,20],
+          [15,7]
+        ]
         """
+        if not root:
+            return []
+        result, levels = [], [root]
+        while root and levels:
+            result.append([node.val for node in levels if node])
+            lvl = []
+            for node in levels:
+                if node:
+                    if node.left:
+                        lvl.append(node.left)
+                    if node.right:
+                        lvl.append(node.right)
+            levels = lvl
+
+        return result
 
 
 
