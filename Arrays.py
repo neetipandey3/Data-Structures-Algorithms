@@ -307,6 +307,43 @@ class Array:
             for i in range(len(matrix)):
                 matrix[i][0] = 0
 
+    def group_anagrams(self, strs):
+        """
+        :type strs: List[str]
+        :rtype: List[List[str]]
+        """
+        '''
+        Given an array of strings, group anagrams together.
+        
+        Example:
+        
+        Input: ["eat", "tea", "tan", "ate", "nat", "bat"],
+        Output:
+        [
+          ["ate","eat","tea"],
+          ["nat","tan"],
+          ["bat"]
+        ]
+        Note:
+        
+        All inputs will be in lowercase.
+        The order of your output does not matter.'''
+
+        from collections import defaultdict
+
+        anagrams = defaultdict(list)
+
+        if not strs:
+            return []
+
+        for s in strs:
+            chars = [0] * 26
+            for c in s:
+                chars[ord(c) - ord('a')] += 1
+            anagrams[tuple(chars)].append(s)
+
+        return list(anagrams.values())
+
 
 def main():
     a = Array()
@@ -324,6 +361,7 @@ def main():
   [3,4,5,2],
   [1,3,1,5]
 ]))
+    print(a.group_anagrams(["eat", "tea", "tan", "ate", "nat", "bat"]))
 
 if __name__ == "__main__":
     main()
