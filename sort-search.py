@@ -62,6 +62,20 @@ class SortAndSearch:
 
         return result
 
+    def findKthLargest(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: int
+        """
+        import heapq
+        '''for i in range(k):
+            if i == k-1:
+                return max(nums)
+            nums.remove(max(nums))'''
+
+        return heapq.nlargest(k, nums)[-1]
+
 
 def main():
     s = SortAndSearch()
