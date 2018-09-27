@@ -31,6 +31,40 @@ class Backtracking:
 
         return result
 
+    def generate_parenthesis(self, n):
+        """
+        :type n: int
+        :rtype: List[str]
+        """
+
+        '''Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
+
+        For example, given n = 3, a solution set is:
+        
+        [
+          "((()))",
+          "(()())",
+          "(())()",
+          "()(())",
+          "()()()"
+        ]'''
+        result = []
+
+        def _gen_paranthesis(combi, _close, _open):
+            print("_open, _close", _open, _close)
+            print(combi)
+            print(result)
+            if _open == 0 and _close == 0:
+                result.append(combi)
+                print(combi)
+            if _open > 0:
+                _gen_paranthesis(combi + "(", _close, _open - 1)
+
+            if _close > _open:
+                _gen_paranthesis(combi + ")", _close - 1, _open)
+
+        _gen_paranthesis("", n, n)
+        return result
 
 def main():
     b = Backtracking()
