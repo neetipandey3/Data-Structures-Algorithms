@@ -69,6 +69,7 @@ class Backtracking:
 def main():
     b = Backtracking()
     print(b.letter_combinations("23"))
+    print(b.generate_parenthesis(3))
 
 
 
