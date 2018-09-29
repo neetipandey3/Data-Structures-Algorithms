@@ -76,10 +76,56 @@ class SortAndSearch:
 
         return heapq.nlargest(k, nums)[-1]
 
+    def search_in_rotated_array(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: int
+        """
+        l, h = 0, len(nums) - 1
+
+        if not nums:
+            return -1
+        if len(nums) == 1:
+            if target == nums[0]:
+                return 0
+
+            return -1
+
+        while True:
+            mid = (l + h) // 2
+            if h - l <= 1:
+                if target == nums[l]:
+                    return l
+                elif target == nums[h]:
+                    return h
+                else:
+                    return -1
+
+            if target == nums[mid]:
+                return mid
+
+            if nums[mid] > nums[l]:
+                if nums[l] <= target <= nums[mid]:
+                    h = mid
+                else:
+                    l = mid + 1
+            else:
+                if nums[mid] <= target <= nums[h]:
+                    l = mid
+                else:
+                    h = mid - 1
+
+            if l == h and nums[l] != target:
+                break
+
+        return -1
+
 
 def main():
     s = SortAndSearch()
     print(s.top_k_frequent([1, 1, 1, 2, 3, 4, 4, 4, 4 , 2]))
+    print(s.search_in_rotated_array([4,5,6,7,0,1,2], 0))
 
 
 
